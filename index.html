@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" manifest="cache.manifest">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+	<meta charset="utf-8">
+	
+	<link rel="stylesheet" href="css/jquery.mobile-1.0.css" type="text/css" media="screen" title="jquery mobile" charset="utf-8">
+<!--
+	<link rel="stylesheet" href="css/jquery.mobile.structure-1.0.css" type="text/css" media="screen" title="no title" charset="utf-8">
+-->
+	<link rel="stylesheet" href="css/application.css" type="text/css" media="screen" title="application styling" charset="utf-8">
+	
+</head>
+<body>	
+	<!--
+	Home Page
+	 -->
+	<div id="home" data-role="page">
+		<div data-role="header">
+			<h1>Referral Calculator</h1>
+			<a href="#explain" data-transition="flip" data-role="button" data-icon="info" data-theme="b">
+				Explain
+			</a>
+		</div>	
+	
+		<div data-role="content">
+			<p> 
+				<span style="width: 49%; text-align: right; padding-right: 10px; float: left;">
+				Referral date from GP:
+				</span>
+				<span style="width: 49%; text-align: right; padding-right: 10px; float: left;">
+				&nbsp;
+				</span>
+			</p>
+			<p style="clear: both;">
+				<span style="width: 49%; text-align: right; padding-right: 10px; float: left;">
+				Last date for notification:
+				</span>
+				<span style="width: 49%; text-align: right; padding-right: 10px; float: left;">
+				&nbsp;
+				</span>
+			</p>
+			<p style="clear: both;">
+				<span style="width: 49%; text-align: right; padding-right: 10px; float: left;">
+				Treatment Deadline:
+				</span>
+				<span style="width: 49%; text-align: right; padding-right: 10px; float: left;">
+				&nbsp;
+				</span>
+			</p>
+			<p style="clear: both;">
+			<a href="#new" data-rel="dialog" data-transition="pop" data-role="button" data-icon="plus" data-theme="b">
+				Change your GP Referral Date
+			</a>
+		</div>	
+	</div>	
+
+	<!--
+	Updating GP referral date
+	 -->
+	<div id="new" data-role="page">
+		<div data-role="header">
+			<h1>Update GP Referral Date</h1>
+		</div>	
+	
+		<div data-role="content">
+			<form action="#" method="post">
+				<div data-role="fieldcontain">
+				<label for="referraldate">New GP Referral Date:</label>
+				<input type="text" name="referraldate" id="referraldate" value="" />
+				</div>
+				<a href="#home" data-rel="page" data-role="button" data-icon="check" data-theme="b">
+					Save
+				</a>
+			</form>
+		</div>	
+	</div>	
+
+	<!--
+	Explanation Page
+	 -->
+	<script type="text/template" id="explain">
+		<div data-role="header">
+			<h1>Referral Calculator - Explanation</h1>
+		</div>	
+	
+		<div data-role="content">
+			<p>
+				Based on your GP referral date (<%= referral.get('referraldate') %>), then 
+				the latest date you can be notified of your forthcoming treatment is 
+				<%= referral.get('lastnotified') %> and that date has to be 3 weeks 
+				<strong>before</strong> your treatment date (which would then be <%= referral.get('treatmentdeadline') %>).
+			</p>
+			<a href="#home" data-transition="flip" data-role="button" data-icon="home" data-theme="b">
+				Home
+			</a>
+		</div>	
+	</script>	
+		
+	<script src="js/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/underscore.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/backbone.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/backbone.localStorage.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.mobile-1.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/application.js" type="text/javascript" charset="utf-8"></script>
+	
+</body>
+</html>
